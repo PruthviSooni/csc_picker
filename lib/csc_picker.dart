@@ -803,7 +803,7 @@ class CSCPickerState extends State<CSCPicker> {
                           widget.showCountry) ...[
                         Expanded(child: countryDropdown())
                       ],
-                      widget.showStates || widget.showCities
+                      widget.showStates && widget.showCountry
                           ? SizedBox(
                               width: 10.0,
                             )
