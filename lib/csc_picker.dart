@@ -1,9 +1,11 @@
 library csc_picker;
 
-import 'package:csc_picker/dropdown_with_search.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
+
+import 'package:csc_picker/dropdown_with_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 import 'model/select_status_model.dart';
 
 enum Layout { vertical, horizontal }
@@ -798,7 +800,7 @@ class CSCPickerState extends State<CSCPicker> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       if (widget.defaultCountry == null &&
-                          widget.showCities) ...[
+                          widget.showCountry) ...[
                         Expanded(child: countryDropdown())
                       ],
                       widget.showStates || widget.showCities
