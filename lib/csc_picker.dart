@@ -531,6 +531,7 @@ class CSCPicker extends StatefulWidget {
     this.layout = Layout.horizontal,
     this.showStates = true,
     this.showCities = true,
+    this.showCountry = true,
     this.defaultCountry,
     this.currentCountry,
     this.currentState,
@@ -557,7 +558,7 @@ class CSCPicker extends StatefulWidget {
   ///Parameters to change style of CSC Picker
   final TextStyle? selectedItemStyle, dropdownHeadingStyle, dropdownItemStyle;
   final BoxDecoration? dropdownDecoration, disabledDropdownDecoration;
-  final bool showStates, showCities;
+  final bool showStates, showCities, showCountry;
   final CountryFlag flagState;
   final Layout layout;
   final double? searchBarRadius;
@@ -796,8 +797,11 @@ class CSCPickerState extends State<CSCPicker> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Expanded(child: countryDropdown()),
-                      widget.showStates
+                      if (widget.defaultCountry == null &&
+                          widget.showCities) ...[
+                        Expanded(child: countryDropdown())
+                      ],
+                      widget.showStates || widget.showCities
                           ? SizedBox(
                               width: 10.0,
                             )
